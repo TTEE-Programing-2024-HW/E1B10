@@ -4,6 +4,40 @@
 #define ROWS 9
 #define COLS 9
 #define BOOKINGS 10
+// 初始化座位表
+void initializeSeats(char seats[ROWS][COLS]) {
+    for (int i = 0; i < ROWS; ++i) {
+        for (int j = 0; j < COLS; ++j) {
+            seats[i][j] = 'O'; // 'O'表示空位
+        }
+    }
+}
+
+// 隨機預訂座位
+void bookSeats(char seats[ROWS][COLS]) {
+    int booked = 0;
+    while (booked < BOOKINGS) {
+        int row = rand() % ROWS;
+        int col = rand() % COLS;
+        if (seats[row][col] == 'O') {
+            seats[row][col] = '*'; // '*'表示已預訂
+            booked++;
+        }
+    }
+}
+
+// 顯示座位表
+void displaySeats(char seats[ROWS][COLS]) {
+    for (int i = 0; i < ROWS; ++i) {
+        for (int j = 0; j < COLS; ++j) {
+            printf("%c ", seats[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+
+
 int main(void)
 {
 	printf("****************    *****************      *                              *      \n");
@@ -91,36 +125,6 @@ int z,i=0;
         
         
 
-// 初始化座位表
-void initializeSeats(char seats[ROWS][COLS]) {
-    for (int i = 0; i < ROWS; ++i) {
-        for (int j = 0; j < COLS; ++j) {
-            seats[i][j] = 'O'; // 'O'表示空位
-        }
-    }
-}
 
-// 隨機預訂座位
-void bookSeats(char seats[ROWS][COLS]) {
-    int booked = 0;
-    while (booked < BOOKINGS) {
-        int row = rand() % ROWS;
-        int col = rand() % COLS;
-        if (seats[row][col] == 'O') {
-            seats[row][col] = '*'; // '*'表示已預訂
-            booked++;
-        }
-    }
-}
-
-// 顯示座位表
-void displaySeats(char seats[ROWS][COLS]) {
-    for (int i = 0; i < ROWS; ++i) {
-        for (int j = 0; j < COLS; ++j) {
-            printf("%c ", seats[i][j]);
-        }
-        printf("\n");
-    }
-}
 
 
